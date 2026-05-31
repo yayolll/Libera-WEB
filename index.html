@@ -1,0 +1,1514 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LIBERA – Sal de tu deuda hipotecaria hoy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #0B1D3A;
+    --navy-deep: #060f1e;
+    --navy-mid: #122444;
+    --gold: #C8A24B;
+    --gold-light: #dfc07a;
+    --gold-dark: #9e7d32;
+    --white: #ffffff;
+    --cream: #f8f5ef;
+    --gray: #6b7280;
+    --light-gray: #f1f0ec;
+    --text-dark: #1a1a2e;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--white);
+    color: var(--text-dark);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(6, 15, 30, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 16px 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(200, 162, 75, 0.2);
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .nav-logo img {
+    height: 40px;
+    width: auto;
+    display: block;
+  }
+
+  .nav-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: 3px;
+  }
+
+  .nav-brand span {
+    color: var(--gold);
+  }
+
+  .nav-cta {
+    background: var(--gold);
+    color: var(--navy);
+    font-weight: 600;
+    font-size: 13px;
+    padding: 10px 22px;
+    border-radius: 4px;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    transition: background 0.2s;
+  }
+
+  .nav-cta:hover { background: var(--gold-light); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    background: var(--navy-deep);
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 120px 5% 80px;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -200px; right: -200px;
+    width: 700px; height: 700px;
+    background: radial-gradient(circle, rgba(200,162,75,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -100px; left: -100px;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(200,162,75,0.05) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-eyebrow {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    width: 30px;
+    height: 1px;
+    background: var(--gold);
+    display: block;
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(38px, 5vw, 62px);
+    font-weight: 900;
+    color: var(--white);
+    line-height: 1.1;
+    margin-bottom: 28px;
+  }
+
+  .hero-title .accent {
+    color: var(--gold);
+    display: block;
+  }
+
+  .hero-subtitle {
+    font-size: 17px;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.75;
+    margin-bottom: 44px;
+    font-weight: 300;
+    max-width: 480px;
+  }
+
+  .hero-subtitle strong {
+    color: rgba(255,255,255,0.9);
+    font-weight: 500;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: var(--gold);
+    color: var(--navy);
+    padding: 16px 32px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 15px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s;
+    letter-spacing: 0.3px;
+  }
+
+  .btn-primary:hover {
+    background: var(--gold-light);
+    transform: translateY(-1px);
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--white);
+    padding: 16px 32px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 15px;
+    border: 1px solid rgba(255,255,255,0.25);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s;
+  }
+
+  .btn-secondary:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+  }
+
+  /* Hero right card */
+  .hero-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(200,162,75,0.2);
+    border-radius: 12px;
+    padding: 40px;
+    position: relative;
+  }
+
+  .hero-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold), transparent);
+    border-radius: 12px 12px 0 0;
+  }
+
+  .card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    color: var(--gold);
+    margin-bottom: 28px;
+    font-weight: 700;
+  }
+
+  .step-item {
+    display: flex;
+    gap: 18px;
+    margin-bottom: 24px;
+    align-items: flex-start;
+  }
+
+  .step-num {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--gold);
+    color: var(--navy);
+    font-weight: 700;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .step-text h4 {
+    color: var(--white);
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+
+  .step-text p {
+    color: rgba(255,255,255,0.5);
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  .hero-badge {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(200,162,75,0.1);
+    border: 1px solid rgba(200,162,75,0.3);
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-top: 28px;
+  }
+
+  .badge-icon {
+    font-size: 24px;
+  }
+
+  .badge-text {
+    font-size: 13px;
+    color: rgba(255,255,255,0.8);
+    font-weight: 500;
+  }
+
+  .badge-text strong {
+    color: var(--gold);
+    font-weight: 600;
+  }
+
+  /* URGENCY STRIP */
+  .urgency-strip {
+    background: var(--gold);
+    padding: 14px 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .urgency-text {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--navy);
+    letter-spacing: 0.3px;
+  }
+
+  .urgency-link {
+    color: var(--navy);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 700;
+    border-bottom: 2px solid var(--navy-mid);
+    padding-bottom: 1px;
+  }
+
+  /* PROBLEMA SECTION */
+  .section {
+    padding: 100px 5%;
+  }
+
+  .section-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-tag {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    color: var(--gold-dark);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(30px, 3.5vw, 46px);
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+
+  .section-subtitle {
+    font-size: 17px;
+    color: var(--gray);
+    line-height: 1.7;
+    max-width: 600px;
+    font-weight: 300;
+  }
+
+  .problema-bg {
+    background: var(--cream);
+  }
+
+  .problema-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+    margin-top: 60px;
+  }
+
+  .problema-list {
+    list-style: none;
+  }
+
+  .problema-list li {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+  }
+
+  .problema-list li:last-child { border-bottom: none; }
+
+  .prob-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 8px;
+    background: rgba(200,162,75,0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 20px;
+  }
+
+  .prob-text h4 {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+
+  .prob-text p {
+    font-size: 14px;
+    color: var(--gray);
+    line-height: 1.6;
+  }
+
+  .problema-highlight {
+    background: var(--navy);
+    border-radius: 12px;
+    padding: 44px;
+    color: var(--white);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .problema-highlight::before {
+    content: '"';
+    font-family: 'Playfair Display', serif;
+    font-size: 200px;
+    position: absolute;
+    top: -40px; right: 20px;
+    color: rgba(200,162,75,0.08);
+    line-height: 1;
+  }
+
+  .highlight-quote {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    line-height: 1.5;
+    color: var(--white);
+    margin-bottom: 30px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .highlight-quote em {
+    color: var(--gold);
+    font-style: normal;
+  }
+
+  .highlight-divider {
+    width: 40px;
+    height: 2px;
+    background: var(--gold);
+    margin-bottom: 24px;
+  }
+
+  .highlight-stat {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .stat-box {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(200,162,75,0.2);
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--gold);
+    display: block;
+  }
+
+  .stat-label {
+    font-size: 12px;
+    color: rgba(255,255,255,0.6);
+    margin-top: 4px;
+    line-height: 1.4;
+  }
+
+  /* SOLUTION */
+  .solution-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    margin-top: 60px;
+  }
+
+  .solution-card {
+    background: var(--white);
+    border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 12px;
+    padding: 36px 30px;
+    position: relative;
+    transition: all 0.2s;
+  }
+
+  .solution-card:hover {
+    border-color: var(--gold);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+  }
+
+  .solution-card.featured {
+    background: var(--navy);
+    border-color: var(--gold);
+  }
+
+  .sol-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 64px;
+    font-weight: 900;
+    color: rgba(0,0,0,0.04);
+    line-height: 1;
+    margin-bottom: -10px;
+    display: block;
+  }
+
+  .solution-card.featured .sol-number {
+    color: rgba(255,255,255,0.06);
+  }
+
+  .sol-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    background: rgba(200,162,75,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  .solution-card.featured .sol-icon {
+    background: rgba(200,162,75,0.2);
+  }
+
+  .sol-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 10px;
+  }
+
+  .solution-card.featured .sol-title {
+    color: var(--white);
+  }
+
+  .sol-desc {
+    font-size: 14px;
+    color: var(--gray);
+    line-height: 1.65;
+  }
+
+  .solution-card.featured .sol-desc {
+    color: rgba(255,255,255,0.65);
+  }
+
+  /* PROCESS */
+  .process-bg {
+    background: var(--navy-deep);
+  }
+
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    margin-top: 60px;
+    position: relative;
+  }
+
+  .process-steps::before {
+    content: '';
+    position: absolute;
+    top: 28px;
+    left: calc(12.5% + 8px);
+    right: calc(12.5% + 8px);
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), var(--gold), transparent);
+    opacity: 0.3;
+  }
+
+  .process-step {
+    padding: 0 20px;
+    text-align: center;
+  }
+
+  .proc-num {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    border: 2px solid var(--gold);
+    background: var(--navy-deep);
+    color: var(--gold);
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 24px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .proc-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 10px;
+  }
+
+  .proc-desc {
+    font-size: 13px;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.6;
+  }
+
+  .process-footer {
+    text-align: center;
+    margin-top: 60px;
+    padding: 36px;
+    background: rgba(200,162,75,0.08);
+    border: 1px solid rgba(200,162,75,0.2);
+    border-radius: 12px;
+  }
+
+  .process-footer p {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    color: var(--gold);
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+
+  .process-footer span {
+    font-size: 14px;
+    color: rgba(255,255,255,0.5);
+  }
+
+  /* BENEFICIOS */
+  .beneficios-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 80px;
+    align-items: center;
+    margin-top: 60px;
+  }
+
+  .beneficio-item {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 28px;
+    align-items: flex-start;
+  }
+
+  .bene-check {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .bene-check svg {
+    width: 14px;
+    height: 14px;
+    fill: none;
+    stroke: var(--navy);
+    stroke-width: 2.5;
+  }
+
+  .bene-text h4 {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+
+  .bene-text p {
+    font-size: 14px;
+    color: var(--gray);
+    line-height: 1.6;
+  }
+
+  .bene-visual {
+    background: var(--navy);
+    border-radius: 16px;
+    padding: 50px 44px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .bene-visual::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; right: -80px;
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(200,162,75,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .bene-visual-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    color: var(--gold);
+    margin-bottom: 30px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+
+  .compare-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .compare-col-title {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    margin-bottom: 4px;
+  }
+
+  .compare-col-title.bad { color: rgba(255,90,90,0.8); }
+  .compare-col-title.good { color: var(--gold); }
+
+  .compare-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  .compare-item.bad { color: rgba(255,255,255,0.5); }
+  .compare-item.good { color: rgba(255,255,255,0.85); }
+
+  .compare-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 6px;
+  }
+
+  .compare-item.bad .compare-dot { background: rgba(255,90,90,0.6); }
+  .compare-item.good .compare-dot { background: var(--gold); }
+
+  /* CONTACT SECTION */
+  .contact-bg {
+    background: var(--cream);
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+    margin-top: 60px;
+  }
+
+  .contact-form-wrap {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 44px;
+    border: 1px solid rgba(0,0,0,0.08);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+  }
+
+  .form-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    color: var(--navy);
+    font-weight: 700;
+    margin-bottom: 28px;
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+  }
+
+  .form-group label {
+    display: block;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--navy);
+    margin-bottom: 6px;
+    letter-spacing: 0.3px;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1.5px solid rgba(0,0,0,0.12);
+    border-radius: 6px;
+    font-size: 14px;
+    font-family: 'DM Sans', sans-serif;
+    color: var(--navy);
+    background: var(--white);
+    transition: border-color 0.2s;
+    outline: none;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: var(--gold);
+  }
+
+  .form-group textarea {
+    height: 100px;
+    resize: vertical;
+  }
+
+  .form-submit {
+    width: 100%;
+    background: var(--navy);
+    color: var(--white);
+    padding: 16px;
+    border: none;
+    border-radius: 6px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    transition: background 0.2s;
+    letter-spacing: 0.3px;
+  }
+
+  .form-submit:hover { background: var(--gold); color: var(--navy); }
+
+  .form-note {
+    text-align: center;
+    font-size: 12px;
+    color: var(--gray);
+    margin-top: 14px;
+  }
+
+  .contact-info-side {
+    padding-top: 10px;
+  }
+
+  .contact-info-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    color: var(--navy);
+    margin-bottom: 16px;
+    font-weight: 700;
+    line-height: 1.3;
+  }
+
+  .contact-info-subtitle {
+    font-size: 16px;
+    color: var(--gray);
+    line-height: 1.7;
+    margin-bottom: 36px;
+  }
+
+  .contact-channel {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 22px;
+    border-radius: 10px;
+    margin-bottom: 14px;
+    text-decoration: none;
+    transition: transform 0.2s;
+    border: 1px solid transparent;
+  }
+
+  .contact-channel:hover { transform: translateX(4px); }
+
+  .contact-channel.whatsapp {
+    background: #25D36610;
+    border-color: #25D36630;
+  }
+
+  .contact-channel.email {
+    background: rgba(11,29,58,0.05);
+    border-color: rgba(11,29,58,0.1);
+  }
+
+  .ch-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    flex-shrink: 0;
+  }
+
+  .contact-channel.whatsapp .ch-icon { background: #25D366; }
+  .contact-channel.email .ch-icon { background: var(--navy); }
+
+  .ch-label {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+  }
+
+  .contact-channel.whatsapp .ch-label { color: #1a9e4e; }
+  .contact-channel.email .ch-label { color: var(--gold-dark); }
+
+  .ch-value {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--navy);
+  }
+
+  .contact-commitment {
+    margin-top: 28px;
+    padding: 20px;
+    border-radius: 8px;
+    border-left: 3px solid var(--gold);
+    background: rgba(200,162,75,0.06);
+  }
+
+  .contact-commitment p {
+    font-size: 14px;
+    color: var(--navy);
+    line-height: 1.6;
+    font-style: italic;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--navy-deep);
+    padding: 50px 5%;
+    border-top: 1px solid rgba(200,162,75,0.15);
+  }
+
+  .footer-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .footer-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    color: var(--white);
+    letter-spacing: 3px;
+    font-weight: 700;
+  }
+
+  .footer-brand span { color: var(--gold); }
+
+  .footer-tagline {
+    font-size: 12px;
+    color: rgba(255,255,255,0.4);
+    margin-top: 4px;
+    letter-spacing: 1px;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 32px;
+  }
+
+  .footer-links a {
+    font-size: 13px;
+    color: rgba(255,255,255,0.4);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--gold); }
+
+  .footer-copy {
+    width: 100%;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding-top: 24px;
+    margin-top: 24px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.25);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  /* FLOATING WA BUTTON */
+  .float-wa {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    z-index: 200;
+    background: #25D366;
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    box-shadow: 0 8px 24px rgba(37,211,102,0.35);
+    transition: transform 0.2s;
+  }
+
+  .float-wa:hover { transform: scale(1.08); }
+
+  .float-wa svg {
+    width: 28px;
+    height: 28px;
+    fill: white;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .fade-up {
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards;
+  }
+
+  .delay-1 { animation-delay: 0.15s; }
+  .delay-2 { animation-delay: 0.3s; }
+  .delay-3 { animation-delay: 0.45s; }
+  .delay-4 { animation-delay: 0.6s; }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .hero-grid,
+    .problema-grid,
+    .beneficios-grid,
+    .contact-grid {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    .solution-grid { grid-template-columns: 1fr 1fr; }
+
+    .process-steps {
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+
+    .process-steps::before { display: none; }
+
+    .hero-card { display: none; }
+
+    .section { padding: 70px 5%; }
+  }
+
+  @media (max-width: 600px) {
+    .solution-grid { grid-template-columns: 1fr; }
+    .process-steps { grid-template-columns: 1fr; }
+    .highlight-stat { grid-template-columns: 1fr 1fr; }
+    .footer-inner { flex-direction: column; text-align: center; }
+    .footer-links { justify-content: center; }
+    .footer-copy { text-align: center; justify-content: center; }
+    .nav-cta { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <img src="data:image/jpeg;base64,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" alt="Libera Financial Investments SAC" style="height:44px; width:auto;">
+  </div>
+  <a href="#contacto" class="nav-cta">Hablar con un asesor</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid">
+    <div>
+      <div class="hero-eyebrow fade-up">Solución Inmobiliaria · Lima, Perú</div>
+      <h1 class="hero-title fade-up delay-1">
+        Tu deuda hipotecaria
+        <span class="accent">tiene solución.</span>
+        Esta semana.
+      </h1>
+      <p class="hero-subtitle fade-up delay-2">
+        Si tienes una propiedad con deuda al banco y no puedes seguir pagando, <strong>te compramos el inmueble, cancelamos tu deuda y te damos una compensación económica.</strong> Sin remates, sin perder tu historial crediticio.
+      </p>
+      <div class="hero-actions fade-up delay-3">
+        <a href="https://wa.me/51986665879?text=Hola%2C%20tengo%20una%20deuda%20hipotecaria%20y%20quisiera%20información%20sobre%20cómo%20pueden%20ayudarme." class="btn-primary" target="_blank">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M5.077 19.6l.43-1.565A8.91 8.91 0 013.11 12C3.11 7.04 7.15 3 12.11 3s9 4.04 9 9-4.04 9-9 9c-1.567 0-3.04-.4-4.322-1.1l-1.545.42a.5.5 0 01-.607-.607l.44-1.113z"/></svg>
+          Hablar por WhatsApp
+        </a>
+        <a href="#como-funciona" class="btn-secondary">
+          ¿Cómo funciona?
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-card fade-up delay-2">
+      <div class="card-title">¿Qué obtienes con Libera?</div>
+
+      <div class="step-item">
+        <div class="step-num">1</div>
+        <div class="step-text">
+          <h4>Cancelamos tu deuda hipotecaria</h4>
+          <p>Pagamos directamente al banco lo que debes. Tú quedas libre de la obligación.</p>
+        </div>
+      </div>
+
+      <div class="step-item">
+        <div class="step-num">2</div>
+        <div class="step-text">
+          <h4>Recibes una carta de no adeudo</h4>
+          <p>Documento oficial que protege tu historial crediticio para el futuro.</p>
+        </div>
+      </div>
+
+      <div class="step-item">
+        <div class="step-num">3</div>
+        <div class="step-text">
+          <h4>Compensación económica para ti</h4>
+          <p>Más allá de saldar tu deuda, recibes un pago adicional por tu propiedad.</p>
+        </div>
+      </div>
+
+      <div class="hero-badge">
+        <span class="badge-icon">⚡</span>
+        <span class="badge-text">Todo el proceso en <strong>menos de una semana</strong></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- URGENCY STRIP -->
+<div class="urgency-strip">
+  <span class="urgency-text">⚠️ Si el banco ya inició un proceso judicial, el tiempo corre en tu contra.</span>
+  <a href="#contacto" class="urgency-link">Consigue una evaluación gratuita hoy →</a>
+</div>
+
+<!-- PROBLEMA -->
+<section class="section problema-bg">
+  <div class="section-inner">
+    <div class="section-tag">¿Te identificas?</div>
+    <h2 class="section-title">Sabemos lo que estás viviendo</h2>
+    <p class="section-subtitle">Estar en mora hipotecaria genera una presión que pocos entienden. Pero hay una salida.</p>
+
+    <div class="problema-grid">
+      <ul class="problema-list">
+        <li>
+          <div class="prob-icon">😰</div>
+          <div class="prob-text">
+            <h4>Las cuotas se acumulan cada mes</h4>
+            <p>Los intereses moratorios crecen y la deuda parece no tener fin.</p>
+          </div>
+        </li>
+        <li>
+          <div class="prob-icon">⚖️</div>
+          <div class="prob-text">
+            <h4>El banco ya inició acciones legales</h4>
+            <p>Un proceso judicial puede terminar en remate, y perderías todo.</p>
+          </div>
+        </li>
+        <li>
+          <div class="prob-icon">📉</div>
+          <div class="prob-text">
+            <h4>Tu historial crediticio en riesgo</h4>
+            <p>La morosidad aparece en centrales de riesgo y cierra puertas financieras.</p>
+          </div>
+        </li>
+        <li>
+          <div class="prob-icon">🏠</div>
+          <div class="prob-text">
+            <h4>No quieres perder tu propiedad en un remate</h4>
+            <p>En un remate judicial, el precio es bajo y tú no decides nada.</p>
+          </div>
+        </li>
+      </ul>
+
+      <div class="problema-highlight">
+        <p class="highlight-quote">
+          "Prefiero vender en mis <em>términos</em> y salir limpio, que esperar a que el banco <em>remate</em> mi propiedad."
+        </p>
+        <div class="highlight-divider"></div>
+        <div class="highlight-stat">
+          <div class="stat-box">
+            <span class="stat-num">7</span>
+            <span class="stat-label">días para cerrar la operación</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-num">0</span>
+            <span class="stat-label">costo para ti. Libera asume todo</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOLUTION -->
+<section class="section" id="como-funciona">
+  <div class="section-inner">
+    <div class="section-tag">La solución</div>
+    <h2 class="section-title">Lo que Libera hace por ti</h2>
+    <p class="section-subtitle">Una propuesta justa, transparente y rápida para salir de una situación que te quita el sueño.</p>
+
+    <div class="solution-grid">
+      <div class="solution-card">
+        <span class="sol-number">01</span>
+        <div class="sol-icon">🏦</div>
+        <h3 class="sol-title">Pagamos tu deuda al banco</h3>
+        <p class="sol-desc">Liquidamos directamente el saldo pendiente con la entidad financiera, incluyendo intereses y costos adicionales. Tú no desembolsas nada.</p>
+      </div>
+
+      <div class="solution-card featured">
+        <span class="sol-number">02</span>
+        <div class="sol-icon">📄</div>
+        <h3 class="sol-title">Carta de no adeudo garantizada</h3>
+        <p class="sol-desc">Una vez saldada la deuda, gestionamos la carta oficial que limpia tu nombre en las centrales de riesgo. Tu historial financiero queda protegido.</p>
+      </div>
+
+      <div class="solution-card">
+        <span class="sol-number">03</span>
+        <div class="sol-icon">💰</div>
+        <h3 class="sol-title">Compensación económica para ti</h3>
+        <p class="sol-desc">Además de saldar tu deuda, recibes un pago adicional. Saldrás de esta situación con el bolsillo más tranquilo y con liquidez para empezar de nuevo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESO -->
+<section class="section process-bg">
+  <div class="section-inner">
+    <div class="section-tag" style="color: var(--gold);">El proceso</div>
+    <h2 class="section-title" style="color: var(--white);">En menos de una semana</h2>
+    <p class="section-subtitle" style="color: rgba(255,255,255,0.5);">Desde que nos contactas hasta que tienes la carta de no adeudo en mano.</p>
+
+    <div class="process-steps">
+      <div class="process-step">
+        <div class="proc-num">1</div>
+        <h3 class="proc-title">Nos contactas</h3>
+        <p class="proc-desc">Por WhatsApp o email. Cuéntanos tu situación en confianza, sin compromiso.</p>
+      </div>
+      <div class="process-step">
+        <div class="proc-num">2</div>
+        <h3 class="proc-title">Evaluamos tu caso</h3>
+        <p class="proc-desc">Revisamos la propiedad, la deuda y te presentamos una propuesta concreta y justa.</p>
+      </div>
+      <div class="process-step">
+        <div class="proc-num">3</div>
+        <h3 class="proc-title">Firmamos el acuerdo</h3>
+        <p class="proc-desc">Todo con respaldo legal y notarial. Transparencia absoluta en cada paso.</p>
+      </div>
+      <div class="process-step">
+        <div class="proc-num">4</div>
+        <h3 class="proc-title">Deuda saldada y listo</h3>
+        <p class="proc-desc">Pagamos al banco, recibes tu carta de no adeudo y tu compensación económica.</p>
+      </div>
+    </div>
+
+    <div class="process-footer">
+      <p>Evaluación gratuita y sin compromiso</p>
+      <span>Hablamos contigo hoy mismo · Lima, Perú</span>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFICIOS / COMPARACIÓN -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-tag">¿Por qué Libera?</div>
+    <h2 class="section-title">La diferencia entre elegir y perder</h2>
+
+    <div class="beneficios-grid">
+      <div>
+        <div class="beneficio-item">
+          <div class="bene-check">
+            <svg viewBox="0 0 14 14"><polyline points="2,7 5,11 12,3"/></svg>
+          </div>
+          <div class="bene-text">
+            <h4>Tú decides cómo y cuándo</h4>
+            <p>No el banco, no el juzgado. La negociación es entre personas, con respeto.</p>
+          </div>
+        </div>
+        <div class="beneficio-item">
+          <div class="bene-check">
+            <svg viewBox="0 0 14 14"><polyline points="2,7 5,11 12,3"/></svg>
+          </div>
+          <div class="bene-text">
+            <h4>Proceso 100% legal y transparente</h4>
+            <p>Trabajamos con notarías y abogados. Todo queda documentado y protegido.</p>
+          </div>
+        </div>
+        <div class="beneficio-item">
+          <div class="bene-check">
+            <svg viewBox="0 0 14 14"><polyline points="2,7 5,11 12,3"/></svg>
+          </div>
+          <div class="bene-text">
+            <h4>Sin costos para el propietario</h4>
+            <p>Libera asume todos los gastos operativos, legales y de gestión.</p>
+          </div>
+        </div>
+        <div class="beneficio-item">
+          <div class="bene-check">
+            <svg viewBox="0 0 14 14"><polyline points="2,7 5,11 12,3"/></svg>
+          </div>
+          <div class="bene-text">
+            <h4>Confidencialidad garantizada</h4>
+            <p>Tu situación financiera es privada. Manejamos todo con discreción absoluta.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="bene-visual">
+        <div class="bene-visual-title">Libera vs. Esperar al banco</div>
+        <div class="compare-row">
+          <div>
+            <div class="compare-col-title bad">Sin Libera</div>
+            <div class="compare-item bad"><span class="compare-dot"></span>Remate judicial a precio bajo</div>
+            <div class="compare-item bad"><span class="compare-dot"></span>Pierdes toda compensación</div>
+            <div class="compare-item bad"><span class="compare-dot"></span>Proceso de meses o años</div>
+            <div class="compare-item bad"><span class="compare-dot"></span>Daño en tu historial crediticio</div>
+            <div class="compare-item bad"><span class="compare-dot"></span>Estrés, incertidumbre, costos legales</div>
+          </div>
+          <div>
+            <div class="compare-col-title good">Con Libera</div>
+            <div class="compare-item good"><span class="compare-dot"></span>Deuda cancelada al 100%</div>
+            <div class="compare-item good"><span class="compare-dot"></span>Compensación económica para ti</div>
+            <div class="compare-item good"><span class="compare-dot"></span>Cierre en menos de una semana</div>
+            <div class="compare-item good"><span class="compare-dot"></span>Carta de no adeudo oficial</div>
+            <div class="compare-item good"><span class="compare-dot"></span>Tranquilidad y nuevo comienzo</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section class="section contact-bg" id="contacto">
+  <div class="section-inner">
+    <div class="section-tag">Hablemos hoy</div>
+    <h2 class="section-title">Cuéntanos tu caso</h2>
+    <p class="section-subtitle">Sin compromiso, sin costo, sin juicios. Solo una conversación honesta sobre cómo podemos ayudarte.</p>
+
+    <div class="contact-grid">
+      <div class="contact-form-wrap">
+        <div class="form-title">Solicita tu evaluación gratuita</div>
+        <form onsubmit="handleSubmit(event)">
+          <div class="form-group">
+            <label>Tu nombre completo</label>
+            <input type="text" placeholder="Ej: María Quispe Ramos" required>
+          </div>
+          <div class="form-group">
+            <label>Teléfono / WhatsApp</label>
+            <input type="tel" placeholder="+51 9XX XXX XXX" required>
+          </div>
+          <div class="form-group">
+            <label>Correo electrónico</label>
+            <input type="email" placeholder="correo@ejemplo.com">
+          </div>
+          <div class="form-group">
+            <label>Distrito donde está la propiedad</label>
+            <select>
+              <option value="">Selecciona un distrito</option>
+              <option>Miraflores</option>
+              <option>San Isidro</option>
+              <option>Surco</option>
+              <option>La Molina</option>
+              <option>San Borja</option>
+              <option>Barranco</option>
+              <option>Magdalena</option>
+              <option>Jesús María</option>
+              <option>Lince</option>
+              <option>San Miguel</option>
+              <option>Pueblo Libre</option>
+              <option>Otro distrito de Lima</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Cuéntanos brevemente tu situación (opcional)</label>
+            <textarea placeholder="Ej: Tengo un departamento con deuda hipotecaria en el banco X y ya me notificaron..."></textarea>
+          </div>
+          <button type="submit" class="form-submit">Solicitar evaluación gratuita →</button>
+        </form>
+        <p class="form-note">🔒 Tus datos son confidenciales. No los compartimos con terceros.</p>
+      </div>
+
+      <div class="contact-info-side">
+        <h3 class="contact-info-title">Prefiero hablar directamente</h3>
+        <p class="contact-info-subtitle">Nuestro equipo está disponible para responder tus dudas con honestidad y sin rodeos.</p>
+
+        <a href="https://wa.me/51986665879?text=Hola%2C%20tengo%20una%20deuda%20hipotecaria%20y%20quisiera%20información%20sobre%20cómo%20pueden%20ayudarme." class="contact-channel whatsapp" target="_blank">
+          <div class="ch-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M5.077 19.6l.43-1.565A8.91 8.91 0 013.11 12C3.11 7.04 7.15 3 12.11 3s9 4.04 9 9-4.04 9-9 9c-1.567 0-3.04-.4-4.322-1.1l-1.545.42a.5.5 0 01-.607-.607l.44-1.113z"/></svg>
+          </div>
+          <div>
+            <div class="ch-label">WhatsApp directo</div>
+            <div class="ch-value">+51 986 66 5879</div>
+          </div>
+        </a>
+
+        <a href="mailto:epacheco@libera.com.pe?subject=Consulta%20sobre%20deuda%20hipotecaria" class="contact-channel email">
+          <div class="ch-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 7L2 7"/></svg>
+          </div>
+          <div>
+            <div class="ch-label">Correo electrónico</div>
+            <div class="ch-value">epacheco@libera.com.pe</div>
+          </div>
+        </a>
+
+        <div class="contact-commitment">
+          <p>"Respondemos todas las consultas en menos de 24 horas. Tu situación merece atención inmediata y un trato digno."</p>
+        </div>
+
+        <div style="margin-top: 28px; display: flex; align-items: center; gap: 12px; padding: 16px; background: rgba(11,29,58,0.05); border-radius: 8px;">
+          <span style="font-size: 28px;">📍</span>
+          <div>
+            <div style="font-size: 13px; font-weight: 600; color: var(--navy);">Operamos en Lima Metropolitana</div>
+            <div style="font-size: 12px; color: var(--gray); margin-top: 2px;">Lima Moderna · Lima Top · Principales distritos</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand"><span>LIBERA</span> Financial Investments SAC</div>
+      <div class="footer-tagline">Generamos valor · Construimos confianza · Impulsamos crecimiento</div>
+    </div>
+    <div class="footer-links">
+      <a href="#como-funciona">Cómo funciona</a>
+      <a href="#contacto">Contacto</a>
+      <a href="mailto:epacheco@libera.com.pe">Email</a>
+    </div>
+    <div class="footer-copy">
+      <span>© 2025 Libera Financial Investments SAC · Lima, Perú</span>
+      <span>Inversiones · Bienes Raíces · Finanzas Corporativas</span>
+    </div>
+  </div>
+</footer>
+
+<!-- FLOATING WA -->
+<a href="https://wa.me/51986665879?text=Hola%2C%20tengo%20una%20deuda%20hipotecaria%20y%20quisiera%20información%20sobre%20cómo%20pueden%20ayudarme." class="float-wa" target="_blank" title="Escríbenos por WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12.11 3C7.15 3 3.11 7.04 3.11 12a8.91 8.91 0 001.397 4.835L3.077 19.6a.5.5 0 00.607.607l1.545-.42A8.91 8.91 0 0012.11 21c4.96 0 9-4.04 9-9s-4.04-9-9-9z"/></svg>
+</a>
+
+<script>
+function handleSubmit(e) {
+  e.preventDefault();
+  const btn = e.target.querySelector('.form-submit');
+  btn.textContent = '✓ Solicitud enviada — Te contactamos pronto';
+  btn.style.background = '#1a9e4e';
+  btn.style.color = 'white';
+  btn.disabled = true;
+
+  const name = e.target.querySelector('input[type="text"]').value;
+  const phone = e.target.querySelector('input[type="tel"]').value;
+  const msg = encodeURIComponent(`Hola, soy ${name}. Mi teléfono es ${phone}. Quisiera información sobre cómo Libera puede ayudarme con mi deuda hipotecaria.`);
+  setTimeout(() => {
+    window.open(`https://wa.me/51986665879?text=${msg}`, '_blank');
+  }, 800);
+}
+
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+</script>
+</body>
+</html>
